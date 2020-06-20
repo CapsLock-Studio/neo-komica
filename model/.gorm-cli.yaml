@@ -1,0 +1,10 @@
+db:
+  host: 127.0.0.1
+  dialects: mysql
+  user: root
+  password: example
+  dbname: komica
+  charset: utf8mb4
+
+migration:
+  path: ./migration
