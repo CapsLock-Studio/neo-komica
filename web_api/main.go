@@ -27,6 +27,7 @@ import (
 // @version 0.1
 // @description The API of neo-komica by golang
 
+// @license.name MIT
 // @contact.name Calvin * Michael
 // @contact.url https://youtu.be/PCp2iXA1uLE
 // @contact.email calvin.huang@capslock.tw
