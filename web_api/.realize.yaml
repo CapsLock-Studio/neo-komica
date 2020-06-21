@@ -1,0 +1,24 @@
+settings:
+  legacy:
+    force: false
+    interval: 0s
+schema:
+- name: gin-hot-reload
+  path: .
+  args:
+  - -alsologtostderr
+  commands:
+    install:
+      method: swag init -g main.go -o docs
+      status: true
+    build:
+      method: go build -tags=jsoniter -o .bin/main ./main.go
+      status: true
+    run:
+      method: ./.bin/main
+      status: true
+  watcher:
+    extensions:
+    - go
+    paths:
+    - /
