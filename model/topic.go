@@ -10,4 +10,5 @@ type Topic struct {
 
 	Order uint
 	Name  string
+	Code  string
 }
