@@ -18,9 +18,9 @@ func ErrorHandlerMiddleware() gin.HandlerFunc {
 		var errors []*gin.Error
 
 		if bindErrorToPrint := c.Errors.ByType(gin.ErrorTypeBind).Last(); bindErrorToPrint != nil {
-			if errors, ok := bindErrorToPrint.Err.(validator.ValidationErrors); ok {
+			if err, ok := bindErrorToPrint.Err.(validator.ValidationErrors); ok {
 				c.JSON(http.StatusBadRequest, gin.H{
-					"Errors": getGinErrorMessages(errors),
+					"Errors": err,
 				})
 				return
 			}
