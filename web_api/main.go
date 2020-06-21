@@ -23,9 +23,9 @@ import (
 	"github.com/CapsLock-Studio/neo-komica/web_api/util/logger"
 )
 
-// @title hentai-fetcher golang API
+// @title neo-komica golang API
 // @version 0.1
-// @description The API of hentai-fetcher by golang
+// @description The API of neo-komica by golang
 
 // @contact.name Calvin * Michael
 // @contact.url https://youtu.be/PCp2iXA1uLE
