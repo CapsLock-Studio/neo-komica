@@ -1,8 +1,6 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
-
 	uuid "github.com/satori/go.uuid"
 )
 
@@ -18,7 +16,7 @@ const (
 
 // Media - the model of image/video
 type Media struct {
-	gorm.Model
+	PublicModel
 
 	Type MediaType
 	// Image or video source URL

@@ -1,17 +1,17 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
 	uuid "github.com/satori/go.uuid"
 )
 
 // Post under the topic
 type Post struct {
-	gorm.Model
+	PublicModel
 
 	UUID     uuid.UUID `gorm:"type:char(36);unique_index;not null"`
 	TopicID  uint
-	ParentID *uint
+	Topic    Topic
+	ParentID *uint `json:"-"`
 	Parent   *Post
 	Message  *string `gorm:"type:mediumtext"`
 

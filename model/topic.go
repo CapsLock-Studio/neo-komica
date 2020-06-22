@@ -1,14 +1,10 @@
 package model
 
-import (
-	"github.com/jinzhu/gorm"
-)
-
 // Topic of chats
 type Topic struct {
-	gorm.Model
+	PublicModel
 
-	Order uint
-	Name  string
-	Code  string
+	Order uint   `gorm:"not null"`
+	Name  string `gorm:"not null"`
+	Code  string `gorm:"unique_index;not null"`
 }
