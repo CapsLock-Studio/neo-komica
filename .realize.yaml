@@ -9,13 +9,13 @@ schema:
   - -alsologtostderr
   commands:
     install:
-      method: swag init -g main.go -o docs
+      method: swag init -g web_api/main.go -o web_api/docs
       status: true
     build:
-      method: go build -tags=jsoniter -o .bin/main ./main.go
+      method: go build -tags=jsoniter -o web_api/.bin/main ./web_api/main.go
       status: true
     run:
-      method: ./.bin/main
+      method: ./web_api/.bin/main
       status: true
   watcher:
     extensions:
