@@ -34,9 +34,9 @@ func NewGorm() *Gorm {
 	// g.URI = util.Getenv("DB_CONNECT_URI", "mysql:3306")
 	g.Username = util.Getenv("DB_USERNAME", "root")
 	g.Password = util.Getenv("DB_PASSWORD", "example")
-	g.DBName = util.Getenv("DB_NAME", "kol_radar")
+	g.DBName = util.Getenv("DB_NAME", "komica")
 	g.Host = util.Getenv("DB_HOST", "localhost")
-	g.Log = util.Getenv("GORM_LOG", "false") == "true"
+	g.Log = util.Getenv("GORM_LOG", "true") == "true"
 
 	return g
 }
