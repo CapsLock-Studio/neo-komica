@@ -15,5 +15,6 @@ type Post struct {
 	Parent   *Post
 	Message  *string `gorm:"type:mediumtext"`
 
-	Medias []Media `gorm:"many2many:post_media_map"`
+	Medias  []Media `gorm:"many2many:post_media_map"`
+	Replies []Post  `gorm:"foreignkey:parent_id"`
 }
