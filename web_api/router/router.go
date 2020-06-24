@@ -11,5 +11,5 @@ func AddRouter(engine *gin.Engine) {
 	r := engine.Group("/api/v1")
 
 	r.GET("/post", post.Index)
-	r.GET("/post/:parent/more", post.More)
+	r.GET("/post/:uuid/more", post.More)
 }

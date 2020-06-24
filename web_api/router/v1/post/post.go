@@ -59,13 +59,13 @@ type moreRequest struct {
 // @Summary get reply posts
 // @Accept json
 // @Produce json
-// @Param parent path string false "get reply posts"
+// @Param uuid path string false "get reply posts"
 // @Param size query uint false "specify list size"
 // @Param from query string false "specify list from"
 // @Success 200 {array} model.Post
-// @Router /post/{parent}/more [get]
+// @Router /post/{uuid}/more [get]
 func More(ctx *gin.Context) {
-	parentUUID := ctx.Param("parent")
+	parentUUID := ctx.Param("uuid")
 	var req moreRequest
 	if err := ctx.BindQuery(&req); err != nil {
 		return
