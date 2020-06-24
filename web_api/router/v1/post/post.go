@@ -83,6 +83,7 @@ func More(ctx *gin.Context) {
 
 	var posts []model.Post
 	model.SharedDB.
+		Scopes(model.ReplyOrder).
 		Where("id > ? AND parent_id = ?", fromPost.ID, parent.ID).
 		Find(&posts)
 
