@@ -9,9 +9,9 @@ type Post struct {
 	PublicModel
 
 	UUID     uuid.UUID `gorm:"type:char(36);unique_index;not null"`
-	TopicID  uint
-	Topic    Topic
-	ParentID *uint `json:"-"`
+	TopicID  uint      `json:"-"`
+	Topic    Topic     `json:"-"`
+	ParentID *uint     `json:"-"`
 	Parent   *Post
 	Message  *string `gorm:"type:mediumtext"`
 
