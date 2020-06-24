@@ -40,7 +40,9 @@ func Index(ctx *gin.Context) {
 		First(&fromPost)
 
 	var posts []model.Post
-	model.SharedDB.Where("topic_id = ? AND parent_id IS NULL AND id > ?", topic.ID, fromPost.ID).
+	model.SharedDB.
+		Scopes(model.PostOrder).
+		Where("topic_id = ? AND parent_id IS NULL AND id > ?", topic.ID, fromPost.ID).
 		Find(&posts).
 		Limit(req.Size)
 
