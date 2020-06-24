@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
 	uuid "github.com/satori/go.uuid"
 
 	"github.com/CapsLock-Studio/neo-komica/model"
@@ -88,4 +89,40 @@ func More(ctx *gin.Context) {
 		Find(&posts)
 
 	ctx.JSON(http.StatusOK, posts)
+}
+
+// Detail - get post and replies
+// @Tags Post
+// @Summary get post and replies
+// @Accept json
+// @Produce json
+// @Param uuid path string true "post's uuid"
+// @Param size query uint false "specify list size"
+// @Param from query string false "specify list from"
+// @Success 200 {array} model.Post
+// @Router /post/{uuid} [get]
+func Detail(ctx *gin.Context) {
+	u := ctx.Param("uuid")
+
+	var root model.Post
+	model.SharedDB.
+		Scopes(model.PostOrder).
+		Preload("Replies", func(db *gorm.DB) *gorm.DB {
+			return db.Order("posts.id DESC")
+		}).
+		Where("uuid = ?", u).
+		Find(&root)
+
+	for i, post := range root.Replies {
+		var replies []model.Post
+		model.SharedDB.
+			Scopes(model.ReplyOrder).
+			Where("parent_id = ?", post.ID).
+			Limit(2).
+			Find(&replies)
+
+		root.Replies[i].Replies = replies
+	}
+
+	ctx.JSON(http.StatusOK, root)
 }
